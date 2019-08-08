@@ -1,0 +1,11 @@
+.bg-stylish {
+    /*background-color:rgba(93, 92, 97, 0.664);*/
+    background-color: whitesmoke;
+    /*background-color: rgb(93, 92, 97);*/
+    /*background-color: rgb(5, 56, 107)*/
+}
+
+.nav-pad {
+    padding-top: 0.2rem;
+    padding-bottom: 0.1rem
+}
