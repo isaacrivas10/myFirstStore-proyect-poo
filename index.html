@@ -17,34 +17,32 @@
 
     <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light nav-pad">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="img/logo.resized.jpeg"></a>
+            <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#"><img src="img/logo.resized.jpeg"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav ml-auto px-3">
                     <li class="nav-item">
                         <a href="#" class="nav-link active btn">Home</a>
                     </li>
-                    <li class="nav-item">
-                            <a href="login/" class="nav-link btn">Log In</a>
+                    <li id="btn-login" class="nav-item">
+                            <a href="forms/?form=login" class="nav-link btn">Log In</a>
                     </li>
-                    <li class="nav-item">
-                            <a href="login/" class="nav-link btn">Sign In</a>
+                    <li id="btn-signin" class="nav-item">
+                            <a href="forms/?form=signup" class="nav-link btn">Sign In</a>
+                    </li>
+                    <li id="btn-profile" class="nav-item invisible">
+                        <a href="profile/" class="nav-link btn">Profile</a>
                     </li>
                     <li class="nav-item">
                            <a href="help.html" class="nav-link btn">Help</a>
                     </li>
-                    <li class="nav-item">
-                            <a href="profile/" class="nav-link btn invisible">Profile</a>
-                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-
-
-    
+   
     <main role="main">
     
    <!-- Jumbotron -->
@@ -57,6 +55,9 @@
         </div>
 
     <!-- Aqui deberia verse el catalogo de promociones-->
+        
+        <button class="btn btn-primary" type="button" onclick="log()"> WASAA </button>
+
 
         <hr>
     </main>
@@ -70,5 +71,6 @@
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
