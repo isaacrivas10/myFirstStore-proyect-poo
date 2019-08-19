@@ -3,6 +3,7 @@ function transition(id,param){
     document.getElementById(id).classList.toggle('fade-out');
     setTimeout(function(){
         window.location.href= './?form='+param;
+        $("[autofocus]").focus();
     }, 2000);
 }
 
@@ -11,7 +12,6 @@ function fadeIn(element){
     e.classList.remove('invisible');
     e.classList.toggle('fade-in');
 }
-
 
 // Toma el parametro de la URL al cargar 
 // Segun el valor muestra el DIV correcto

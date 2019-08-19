@@ -1,8 +1,11 @@
+<meta charset="utf-8">
 
 <link rel="stylesheet" href="../css/bootstrap.min.css">
 <link rel="stylesheet" href="css/main_login.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 <script src="js/form_controller.js"></script>
+<script src="../js/jquery-3.4.1.min.js"></script>
+
 <body>
 
     <div class="container main-container">
@@ -12,7 +15,7 @@
             </h1>
         </div>
 
-        <div id="loginForm" class="col-sm-12 invisible">
+        <div id="loginForm" class="col-sm-12 invisible" autofocus>
             <form class="form-signin">
                 <div class="text-center mb-4">
                     <h1 class="h3 mb-3 font-weight-normal">Log In</h1>
@@ -38,7 +41,7 @@
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Take me there!</button>
             </form>
         </div>
-        <div id="signupForm" class="col-sm-12 invisible form-signin">
+        <div id="signupForm" class="col-sm-12 invisible form-signin" autofocus>
             <div class="text-center mb-4">
                 <h1 class="h3 mb-3 font-weight-normal">Sign Up</h1>
                 <p>New account new possibilities</p>
@@ -74,9 +77,8 @@
                     </div>
                     <select class="form-control">
                         <option selected=""> Select job type</option>
-                        <option>Designer</option>
-                        <option>Manager</option>
-                        <option>Accaunting</option>
+                        <option>Costumer</option>
+                        <option>Enterprise</option>
                     </select>
                 </div> <!-- form-group end.// -->
                 <div class="form-group input-group">

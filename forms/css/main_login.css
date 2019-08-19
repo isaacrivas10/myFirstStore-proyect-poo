@@ -116,11 +116,11 @@ body {
 /* Fade In/Out Animations*/
 
 .fade-in {
-  animation: fadeIn ease 3s;
-  -webkit-animation: fadeIn ease 3s;
-  -moz-animation: fadeIn ease 3s;
-  -o-animation: fadeIn ease 3s;
-  -ms-animation: fadeIn ease 3s;
+  animation: fadeIn ease 2s;
+  -webkit-animation: fadeIn ease 2s;
+  -moz-animation: fadeIn ease 2s;
+  -o-animation: fadeIn ease 2s;
+  -ms-animation: fadeIn ease 2s;
 }
 
 
@@ -169,11 +169,11 @@ body {
   }
 }
 .fade-out {
-  animation: fadeOut ease 3s;
-  -webkit-animation: fadeOut ease 3s;
-  -moz-animation: fadeOut ease 3s;
-  -o-animation: fadeOut ease 3s;
-  -ms-animation: fadeOut ease 3s;
+  animation: fadeOut ease 2s;
+  -webkit-animation: fadeOut ease 2s;
+  -moz-animation: fadeOut ease 2s;
+  -o-animation: fadeOut ease 2s;
+  -ms-animation: fadeOut ease 2s;
 }
 
 
