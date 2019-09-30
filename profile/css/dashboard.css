@@ -1,3 +1,86 @@
+/*---------------------------
+    Tipography
+-----------------------------*/
+a {
+  color: #2B2D42;
+  font-weight: 500;
+  -webkit-transition: 0.2s color;
+  transition: 0.2s color;
+}
+
+a:hover, a:focus {
+  color: rgb(148, 66, 224);
+  text-decoration: none !important;
+  outline: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #2B2D42 !important; 
+  font-weight: 700 !important;
+  margin: 0 0 10px !important;
+}
+
+ul, ol {
+  margin: 0 !;
+  padding: 0;
+  list-style: none
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: #EDEEEE !important;
+  font-weight: 400;
+  color: #333;
+}
+
+.border-white {
+  border-radius: 50%;
+  border: 5px solid rgba(255,255,255,0.5);
+}
+
+/*---------------------------
+    Presentation
+-----------------------------*/
+
+.pre-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-clip: border-box;
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+.card-text {
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+
+
+/*---------------------------
+    Social Media
+-----------------------------*/
+
+ /* Style all font awesome icons */
+ .fab {
+  padding: 0px 20px;
+  font-size: 30px !important;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
+}
+
+/* Add a hover effect if you want */
+.fa:hover {
+  opacity: 0.7;
+}
+
+/*---------------------------
+    Sidebar
+-----------------------------*/
 @keyframes swing {
   0% {
     transform: rotate(0deg);
@@ -38,9 +121,7 @@
     opacity: 0;
   }
 }
-body {
-  font-size: 0.9rem;
-}
+
 .page-wrapper .sidebar-wrapper,
 .sidebar-wrapper .sidebar-brand > a,
 .sidebar-wrapper .sidebar-dropdown > a:after,
@@ -85,7 +166,7 @@ body {
 
 @media screen and (min-width: 768px) {
   .page-wrapper.toggled .page-content {
-    padding-left: 300px;
+    padding-left: 250px;
   }
 }
 /*----------------show sidebar button----------------*/
@@ -359,7 +440,7 @@ body {
 }
 
 .page-wrapper .page-content > div {
-  padding: 20px 40px;
+  padding: 2px 40px;
 }
 
 .page-wrapper .page-content {

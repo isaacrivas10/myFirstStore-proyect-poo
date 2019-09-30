@@ -1,0 +1,15 @@
+{
+    "name": "drunkenboy/mystore",
+    "description": "Administracion de la Tienda Online",
+    "type": "project",
+    "license": "UNAH",
+    "authors": [
+        {
+            "name": "drunkenboy",
+            "email": "idrc74@hotmail.com"
+        }
+    ],
+    "require": {
+        "grpc/grpc": "^v1.1.0"
+    }
+}
