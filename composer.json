@@ -10,6 +10,7 @@
         }
     ],
     "require": {
-        "grpc/grpc": "^v1.1.0"
+        "grpc/grpc": "^v1.1.0",
+        "google/cloud-firestore": "^1.9"
     }
 }

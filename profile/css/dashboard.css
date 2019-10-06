@@ -1,3 +1,27 @@
+
+.invisible {
+  display: none;
+  visibility: hidden;
+}
+
+.bg_load {
+  z-index: 1000;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+}
+
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
 /*---------------------------
     Tipography
 -----------------------------*/
@@ -25,17 +49,59 @@ ul, ol {
   padding: 0;
   list-style: none
 }
+.map-size {
+  height: 400px;  /* The height is 400 pixels */
+  width: 100%;  /* The width is the width of the web page */
+ }
 
 body {
-  font-family: 'Montserrat', sans-serif;
   background: #EDEEEE !important;
   font-weight: 400;
   color: #333;
 }
 
+main {
+  font-family: 'Montserrat', sans-serif;
+}
+
 .border-white {
   border-radius: 50%;
   border: 5px solid rgba(255,255,255,0.5);
+}
+
+.center-h {
+  display: block;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.sm-pad {
+  padding-right: auto !important;
+  padding-left: auto !important;
+}
+
+@media screen and (max-width: 992px) {
+  .sm-pad {
+    padding-right: 10px !important;
+  }
+}
+
+.img-full{
+  
+  display: block;
+  margin: auto;
+
+  height: auto;
+  max-height: 100%;
+
+  width: auto;
+  max-width: 100%;
+}
+
+.size-fixed {
+   width:250px; 
+   max-width:250px; 
+   display: inline-block;
 }
 
 /*---------------------------
@@ -64,7 +130,7 @@ body {
 -----------------------------*/
 
  /* Style all font awesome icons */
- .fab {
+ .fab-a {
   padding: 0px 20px;
   font-size: 30px !important;
   width: 50px;
@@ -169,6 +235,7 @@ body {
     padding-left: 250px;
   }
 }
+
 /*----------------show sidebar button----------------*/
 #show-sidebar {
   position: fixed;
@@ -434,8 +501,7 @@ body {
 
 .page-wrapper .page-content {
   display: inline-block;
-  width: 100%;
-  padding-left: 0px;
+  width: 100%;  
   padding-top: 20px;
 }
 
