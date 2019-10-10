@@ -109,8 +109,8 @@
               </a>
               <div class="sidebar-submenu">
                 <ul>
-                  <li>
-                    <a id="products" onclick="load.products()" href="#">Products<span class="badge badge-pill badge-danger">10</span>
+                  <li id="prd">
+                    <a onclick="load.products()" href="#">Products<span class="badge badge-pill badge-danger">10</span>
                     </a>
                   </li>
                   <li>
@@ -265,58 +265,60 @@
           </button>
         </div>
         <div class="modal-body">
-          <form class="">
+          <form id='productForm'class='needs-validation'>
             <div class="form-row mb-3">
               <div class="col-4 w-50 h-50 text-center">
-                <img src="../img/user.jpg" alt="product img" class="img-fluid">
+                <img id='product-img' name='product-img' src="" alt="product img" class="img-fluid">
               </div>
               <div class="col-8 input-group mb-3">
                 <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="fileInput" aria-describedby="fileInput">
-                  <label class="custom-file-label" for="fileInput">Image</label>
+                  <input type="file" class="custom-file-input" id="productBtn" name="productBtn" aria-describedby="productBtn" required/>
+                  <label class="custom-file-label" for="productBtn">Image</label>
                   <div class="invalid-feedback">Please choose an image</div>
                 </div>
               </div>
             </div>
             <div class="form-row">
               <div class="col-md-5 mb-3">
-                <label for="productName">Product Name</label>
-                <input type="text" class="form-control" id="productName" placeholder="Product Name">
+                <label for="name">Product Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Product Name" required>
                 <div class="invalid-feedback">A name is needed</div>
               </div>                
               <div class="col-md-7 form-group">
                 <label for="category">Category</label>
-                <select id="category" class="custom-select">
-                  <option value="">Product Category</option>
-                  <option value="1">Console</option>
-                  <option value="2">TV</option>
-                  <option value="3">Laptops</option>
+                <select id="category" name="category" class="custom-select" required>
+                  <option value="">Product Category</option>                  
                 </select>
                 <div class="invalid-feedback">Please select a category for your product</div>
               </div>
             </div>
             <div class="form-row mb-3">
               <div class="col-md-3 col-sm-4 form-group">
-                <label for="productPrice">Price</label>
+                <label for="price">Price</label>
                 <div class="input-group">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" id="productPricePrepend">$</span>
+                    <span class="input-group-text">$</span>
                   </div>
-                  <input type="number" min="1" max="99999" class="form-control" id="productPrice" placeholder="Price" aria-describedby="productPricePrepend">
+                  <input type="number" min="1" max="99999" class="form-control" id="price" name="price" placeholder="Price" aria-describedby="productPricePrepend" required>
                 </div>
               </div>
               <div class="col-md-5 col-sm-8 form-group">
                 <label for="discount">Discount</label>
-                <select id="discount" class="custom-select">
+                <select id="discount" name="discount" class="custom-select" required>
                   <option value="">Product discount</option>
-                  <option value="1">10%</option>
-                  <option value="2">20%</option>
-                  <option value="3">30%</option>
+                  <option value=.1>10%</option>
+                  <option value=.2>20%</option>
+                  <option value=.3>30%</option>
+                  <option value=.4>40%</option>
+                  <option value=.5>50%</option>
+                  <option value=.6>60%</option>
+                  <option value=.7>70%</option>
+                  <option value=.8>80%</option>
                 </select>
               </div>
               <div class="col-md-4 form-group">
-                <label for="productStatus">Product Status</label>
-                <select id="productStatus" class="custom-select">
+                <label for="status">Product Status</label>
+                <select id="status" name="status" class="custom-select" required>
                   <option value="">Status</option>
                   <option value="1">USED</option>
                   <option value="2">HALF USED</option>
@@ -327,14 +329,13 @@
             </div>
             <div class="form-group">
               <label for="description">Write a brief description of your product</label>
-              <textarea class="form-control" id="description" rows="3"></textarea>
+              <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
             </div>
-          </form>
-          
+          </form>    
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button id="pruebas" type="submit" class="btn btn-primary">Save changes</button>
+          <button id="modal-btn" type="submit" form='productForm' class="btn btn-primary">Save changes</button>
         </div>
       </div>
     </div>
@@ -347,6 +348,7 @@
   <script src="../js/bootstrap.min.js"></script>
   <script src="../js/cookies.js"></script>
   <script src="js/user.js"></script>
+  <script src="js/products.js"></script>
   <script src="js/profile-controller.js"></script>
   <script src=https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js></script>
   <script src="js/demo/charts.js"></script>

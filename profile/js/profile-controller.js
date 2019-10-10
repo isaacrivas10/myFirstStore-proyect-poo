@@ -78,7 +78,7 @@ load= {
     `<div class="row">
     <div class="col-lg-4 text-center">
       <div>
-        <img class="img-fluid w-50 h-50 rounded-circle border-white" src="${userData.photo}" alt="user img">
+        <img class="img-fluid w-50 h-50 rounded-circle border-white" src="${'../ajax/'+userData.photo}" alt="user img">
       </div>
       <div class="pre-card text-center">
         <div class="card-body">
@@ -139,7 +139,18 @@ load= {
       </div>
       <div id="products" class="row mb-2"></div>`
       );
-    for (let i=0; i<10; i++){
+    prd= ajax(
+      'GET',
+      '../ajax/',
+      'id='+userID,
+      function(res){
+        console.log(res);
+      },
+      function error(e){
+        console.log(e);
+      }
+    );
+    for (let i=0; i<prd.length; i++){
       $('#products').append(
         `<div class="col-md-6 ">
           <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
@@ -274,7 +285,7 @@ load= {
             <div class="form-row mb-2">
               <div class="col-lg-6 col-md-12 text-center mb-3">
                 <div class="mb-2">
-                  <img src="${userData.photo}" id='usr-img' alt="product img" class="img-fluid w-50 h-50">
+                  <img src="${'../ajax/'+userData.photo}" id='usr-img' alt="user img" class="img-fluid w-50 h-50">
                 </div>
                 <div class="col-10 custom-file">
                   <input id="new-img-btn" type="file" class="custom-file-input" id="fileInput" aria-describedby="fileInput">
@@ -347,7 +358,7 @@ load= {
 
 function loadContent(){
   $('#userName').html(userData.name.first + ' ' +userData.name.last);
-  $('#usr-pic').attr('src', userData.photo);
+  $('#usr-pic').attr('src', '../ajax/'+userData.photo);
   if(userData.accountType == "admin"){
     $('#role').html('Administrator');
     $('#ecommerce').addClass('invisible');
@@ -355,13 +366,12 @@ function loadContent(){
   }
   if(userData.accountType == 'customer'){
     $('#role').html('Customer');
-    $('#products').addClass('invisible');
+    $('#prd').addClass('invisible');
     $('#components').addClass('invisible');
     $('#charts').addClass('invisible');
   }
   if(userData.accountType == 'enterprise'){
     $('#role').html('Enterprise');
-    $('#products').addClass('invisible');
     $('#components').addClass('invisible');
     $('#charts').addClass('invisible');
   }
@@ -375,5 +385,19 @@ function logOut(){
 $(document).ready(
   function(){
     $("#close-sidebar").trigger('click');
+    $("#new-img-btn").on('change',function (){
+      console.log('trash');
+      //loadImg($(this), $('#usr-img'));
+    });
+    
+    $("#productBtn").on('change',function (){
+      loadImg($(this), $('#product-img'));
+    });
+
+    $('#productForm').submit(
+      function(e){
+          e.preventDefault();
+          setProduct($(this).serialize());
+      })
   }
 )

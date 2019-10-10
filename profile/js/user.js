@@ -3,32 +3,17 @@
  * JS File For User Information Retriever
  * 
  */
-// Send img to server and validation
-$(function() {
-    $("input:file").change(function (){
-        var fd= new FormData();
-        var file = $(this)[0].files[0];
-        fd.append('img',file);
 
-        $.ajax({
-            url: '../ajax/',
-            type: 'POST',
-            data: fd,
-            contentType: false,
-            processData: false,
-            success: function(response){
-                response= JSON.parse(response,true);
-                console.log(response);
-                if(response['status'] == 200){
-                    $("#usr-img").attr('src','../ajax/'+response['file']); // Display image element
-                }else{
-                    alert('Invalid image file');
-                }
-            },
-        });
+function ajax(method, url, data, success=null, error=null){
+    $.ajax({
+        type: method,
+        url: url,
+        dataType: 'json',
+        data: data,
+        success: success,
+        error: error
     });
-  });
-  
+}
 
 function getUserData(id){
     $.ajax({
@@ -49,6 +34,22 @@ function getUserData(id){
     });
 }
 
+function updateUserData(data){
+    $.ajax({
+        type: 'PUT',
+        url: '../ajax/index.php?id='+userID,
+        dataType: 'json',
+        data: data,
+        success: function(res){
+            console.log(res);
+        },
+        error: function (err) {
+            console.log('Error: ');
+            console.log(err);
+        }
+    });
+}
+
 var userData= null;
 userID= getCookie("sessionID");
 if (userID != "") {
@@ -59,19 +60,19 @@ if (userID != "") {
             $('.text-success').toggle('invisible');
         },
         2000
-    )
+    );
     setTimeout(
         function(){
             $('.text-danger').removeClass('invisible');
         },
         2000
-    )
+    );
     setTimeout(
         function(){
             window.location.href= '../index.html';
         },
         3000
-    )
+    );
 }
 
 

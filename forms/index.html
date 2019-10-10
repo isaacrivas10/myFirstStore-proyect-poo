@@ -22,8 +22,14 @@
                     <a href="../index.html">Honduras Digital Store</a>
                 </h1>
             </div>
-        
+                   
             <div class="col-lg-12">
+                <div id="alert" class="alert alert-warning collapse" role="alert">
+                    <p id="alertInfo"></p>
+                    <button type="button" onclick="closeAlert()" class="close">
+                        <span id="close-btn" aria-hidden="true">&times;</span>
+                    </button>
+                </div>
                 <div id="loginForm" class="invisible">
                     <form id="loginF"class="form-signin">
                         <div class="text-center mb-4">
@@ -46,7 +52,7 @@
                             <input type="checkbox" value="remember-me"> Remember me
                             </label>
                         </div>        
-                        <button id="btn-login" onclick="manageLogin()" class="btn btn-lg btn-primary btn-block" type="button">Take me there!</button>
+                        <button id="btn-login" type="submit" class="btn btn-lg btn-primary btn-block" type="button">Take me there!</button>
                         <p class="text-center pt-3">New here? <a href="#" onclick="transition('loginForm','signup')">Come on, sign up now!</a></p>
                     </form>
                 </div>
@@ -60,8 +66,8 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                             </div>
-                            <input name="firstName" class="form-control w-25" placeholder="First name" type="text">
-                            <input name="lastName" class="form-control w-25" placeholder="Last name" type="text">
+                            <input name="firstName" class="form-control w-25" placeholder="First name" type="text" required>
+                            <input name="lastName" class="form-control w-25" placeholder="Last name" type="text" required>
                         </div> <!-- form-group// -->
                         <div class="form-group input-group">
                             <div class="input-group-prepend">
@@ -86,7 +92,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"> <i class="fa fa-building"></i> </span>
                             </div>
-                            <select name='accountType' class="form-control">
+                            <select name='accountType' class="form-control" required>
                                 <option selected=""> Select job type</option>
                                 <option value='customer'>Costumer</option>
                                 <option value='enterprise'>Enterprise</option>
@@ -96,16 +102,16 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                             </div>
-                            <input id="p1" name='password' class="form-control" placeholder="Create password" type="password">
+                            <input id="p1" name='password' class="form-control" placeholder="Create password" type="password" required>
                         </div> <!-- form-group// -->
                         <div class="form-group input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                             </div>
-                            <input id="p2" class="form-control" placeholder="Repeat password" type="password">
+                            <input id="p2" class="form-control" placeholder="Repeat password" type="password" required>
                         </div> <!-- form-group// -->
                         <div class="form-group">
-                            <button type="button" onclick="manageSignUp()" class="btn btn-primary btn-block"> Create Account  </button>
+                            <button type="submit"  class="btn btn-primary btn-block"> Create Account  </button>
                         </div> <!-- form-group// -->
                         <p class="text-center">Have an account? <a href="#" onclick="transition('signupForm','login')">Log In</a></p>
                     </form>

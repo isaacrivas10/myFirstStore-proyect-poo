@@ -8,10 +8,10 @@
         ];
         public $email;
         public $phone;
-        public $pass;
+        public $password;
         public $occupation;
         public $location;
-        public $photo="../img/demo/user.jpg";
+        public $photo="upload/profile/user.jpg";
         public $socialMedia= [
             'facebook'=> null,
             'twitter'=> null,
@@ -35,7 +35,7 @@
         }
 
         public function toArray(){
-            return json_decode(json_encode($this), true);
+           return json_decode(json_encode($this), true);
         }
 
     }

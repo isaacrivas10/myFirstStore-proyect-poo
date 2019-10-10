@@ -5,7 +5,7 @@ function userLogged(){
 }
 
 (()=>{
-   //loadProducts();
+   loadProducts();
    if (checkCookie('sessionID')){
        userLogged();
    }

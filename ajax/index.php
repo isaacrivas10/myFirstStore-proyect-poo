@@ -1,7 +1,16 @@
 <?php
 
     require 'class/db.php';
+    require 'class/product.php';
     require 'class/user.php';
+
+    $status=[
+        'ok'=> 1,
+        'userExists'=> 2,
+        'invalidPassword'=> 3,
+        'userNotExists' => 4
+    ];
+
 
     $db= new Database();
 
@@ -17,12 +26,21 @@
         if ($form=='login'){
             $id = $db->checkUser($_POST['email'], $_POST['password']);
             // if exists
-            if ($id){
+            if ($id && $id!=3){
                 $confirmation= [
                     'userID'=>$id
+                ];                   
+            } else {
+                $confirmation= [
+                    'error'=>''
                 ];
-                echo json_encode($confirmation);    
+                if ($id == 3){
+                    $confirmation['error']= $status['invalidPassword'];
+                } else {
+                    $confirmation['error']= $status['userNotExists'];
+                }
             }
+            echo json_encode($confirmation);
         }
         if ($form=='signin'){
             $_POST['name']= [
@@ -32,9 +50,27 @@
             unset($_POST['firstName']);
             unset($_POST['lastName']);            
             $usr= new User($_POST);
-            $db->addUser($usr->toArray());
+            $checker= $db->checkUser($usr->email);
+            if ($checker == false){
+                $confirmation= [
+                    'userID'=>$db->addUser($usr->toArray())
+                ];                
+            } else {
+                $confirmation= [
+                    'error'=>$status['userExists']
+                ];
+            }
+            echo json_encode($confirmation);
+        }
+        if ($form=='product'){            
+            $product = new Product($_POST);
+            // Movemos la imagen de la carpeta temporal a su ubicacion final
+            $product_img = 'upload/products/'.pathinfo($product->img, PATHINFO_FILENAME);
+            copy($product->img, $product_img);
+            $product->img= $product_img;
+            $id= $db->addProduct($product->toArray(), $product->category);
             $confirmation= [
-                'userID'=>$db->addUser($usr->toArray())->id()
+                'productID'=> $id
             ];
             echo json_encode($confirmation);
         }
@@ -42,6 +78,29 @@
 
     if (isset($_GET['userID'])){
         echo json_encode($db->getUserDataByID($_GET['userID']));
+    }
+
+    if (isset($_GET['category']) && $_GET['category']=='all'){
+        echo json_encode($db->getAllProductCategories());
+    }
+
+    if (isset($_GET['category']) && $_GET['category']!='all'){
+        echo json_encode($db->getProductsByCategory($_GET['category']));
+    }
+
+    if (isset($_GET['category']) && isset($_GET['id'])){
+        echo json_encode($db->getAllUserProducts($_GET['id']));
+    }
+
+    if ($_SERVER['REQUEST_METHOD'] =='PUT' && isset($_GET['id'])){
+        $_PUT=array();
+        if ($_SERVER['REQUEST_METHOD'] == 'PUT')
+            parse_str(file_get_contents("php://input"), $_PUT); //Convierte de URLEncoded a Arreglo Asociativo
+        
+        $user= new User($db->getUserDataByID($_GET['id']));
+        $data= array_merge($user->toArray(), $_PUT);
+        echo json_encode($data);
+        $db->updateUser($_GET['id'], $data);
     }
 
     if (isset($_FILES['img'])){
@@ -86,5 +145,5 @@
         } else{
             echo json_encode($response);
         }
-    }   
+    }
 ?>

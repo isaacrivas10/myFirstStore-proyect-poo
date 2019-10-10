@@ -1,4 +1,17 @@
 
+$('#signinF').submit(
+    (e)=>{
+        e.preventDefault();
+        manageSignUp();
+    }
+);
+$('#loginF').submit(
+    (e)=>{
+        e.preventDefault();
+        manageLogin();
+    }
+);
+
 function transition(id,param){
     document.getElementById(id).classList.toggle('fade-out');
     $(id).addClass('invisible');
@@ -6,6 +19,10 @@ function transition(id,param){
         window.location.href= '?form='+param;
     }, 2000);
 }
+
+function closeAlert(){
+    $('#alert').hide();
+}  
 
 function fadeIn(element){
     let e= document.getElementById(element);
@@ -25,8 +42,20 @@ function postAJAX(data){
         dataType: 'json',
         data: data,
         success: function(res){
-            console.log(res);
-            completeLogin(res['userID']);
+            if (!('error' in res)){
+                completeLogin(res['userID']);
+            } else {
+                if (res['error']== 2){
+                    $('#alertInfo').html('<strong>Oops!</strong> This email is already in use.');
+                }
+                if (res['error']== 3){
+                    $('#alertInfo').html('<strong>Oops!</strong> Wrong password, try again.');
+                }
+                if (res['error']== 4){
+                    $('#alertInfo').html('<strong>Oops!</strong> There is no user with this email.');
+                }
+                $('#alert').show();
+            }
         },
         error: function (err) {
             console.log('Error: ');
@@ -34,26 +63,28 @@ function postAJAX(data){
         }
     });
 }
+
 function manageLogin(){
     if (validateEmail($('#log-email').val())){
         var data = $('#loginF').serialize()+'&form=login';
-        console.log(data);
         postAJAX(data);
     } else {
-        console.log('email wrong');
+        $('#alertInfo').html('<strong>Oops!</strong> Invalid email.');
+        $('#alert').show();
     }
 }
 function manageSignUp(){
     if (validateEmail($('#email').val())){
         if ($('#p1').val()==$('#p2').val()){
-            var data = $('#signinF').serialize()+'&phone='+$("#phoneCode")+$('#phone')+'&form=signin';
-            console.log(data);
+            var data = $('#signinF').serialize()+'&phone='+$("#phoneCode").val()+$('#phone').val()+'&form=signin';            
             postAJAX(data);
         } else {
-            console.log('pass not ok');
+            $('#alertInfo').html('<strong>Oops!</strong> Passwords should match');
+            $('#alert').show();
         }
     } else {
-        console.log('not email');
+        $('#alertInfo').html('<strong>Oops!</strong> Invalid email.');
+        $('#alert').show();
     }
 }
 
